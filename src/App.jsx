@@ -1,6 +1,8 @@
 import { AuthProvider, useAuth } from "./context/AuthContext";
+import { AppProvider } from "./context/AppContext";
 import Layout from "./components/Layout";
 import LoginPage from "./pages/LoginPage";
+import TweetComposer from "./components/TweetComposer";
 
 function AppContent() {
   const { currentUser, logout } = useAuth();
@@ -11,25 +13,24 @@ function AppContent() {
 
   return (
     <Layout>
-      <div style={{ padding: 24 }}>
-        <p style={{ color: "#71767b", marginBottom: 16 }}>
-          Connecté en tant que <strong style={{ color: "#e7e9ea" }}>@{currentUser.username}</strong>
-        </p>
-        <button
-          onClick={logout}
-          style={{
-            background: "none",
-            border: "1px solid #2f3336",
-            borderRadius: 20,
-            color: "#e7e9ea",
-            padding: "8px 20px",
-            fontSize: 14,
-            cursor: "pointer",
-          }}
-        >
-          Se déconnecter
-        </button>
+      {/* En-tête */}
+      <div style={{
+        padding: "16px",
+        borderBottom: "1px solid #2f3336",
+        position: "sticky",
+        top: 0,
+        background: "rgba(0,0,0,0.85)",
+        backdropFilter: "blur(8px)",
+        zIndex: 10,
+      }}>
+        <h2 style={{ color: "#e7e9ea", fontSize: 20, fontWeight: 700 }}>
+          Accueil
+        </h2>
       </div>
+
+      {/* Composeur de tweet */}
+      <TweetComposer />
+
     </Layout>
   );
 }
@@ -37,7 +38,9 @@ function AppContent() {
 export default function App() {
   return (
     <AuthProvider>
-      <AppContent />
+      <AppProvider>
+        <AppContent />
+      </AppProvider>
     </AuthProvider>
   );
 }
