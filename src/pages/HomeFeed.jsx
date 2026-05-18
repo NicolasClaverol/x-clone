@@ -5,7 +5,7 @@ import TweetCard from "../components/TweetCard";
 
 export default function HomeFeed() {
   const { currentUser } = useAuth();
-  const { tweets, users } = useApp();
+  const { tweets } = useApp();
 
   const feedTweets = tweets
     .filter(t => {
