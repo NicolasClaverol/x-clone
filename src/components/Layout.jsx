@@ -1,6 +1,10 @@
 import Sidebar from "./Sidebar";
+import WhoToFollow from "./WhoToFollow";
+import { useAuth } from "../context/AuthContext";
 
 export default function Layout({ children }) {
+  const { currentUser } = useAuth();
+
   return (
     <div style={{
       display: "flex",
@@ -8,11 +12,8 @@ export default function Layout({ children }) {
       margin: "0 auto",
       minHeight: "100vh",
     }}>
-
-      {/* Colonne gauche — Sidebar */}
       <Sidebar />
 
-      {/* Colonne centrale — Contenu principal */}
       <main style={{
         flex: 1,
         borderRight: "1px solid #2f3336",
@@ -22,22 +23,12 @@ export default function Layout({ children }) {
         {children}
       </main>
 
-      {/* Colonne droite — Panneau info */}
       <aside style={{
         width: 280,
         padding: 16,
       }}>
-        <div style={{
-          background: "#16181c",
-          borderRadius: 16,
-          padding: 16,
-        }}>
-          <p style={{ color: "#71767b", fontSize: 14 }}>
-            Panneau droit — bientôt disponible
-          </p>
-        </div>
+        {currentUser && <WhoToFollow />}
       </aside>
-
     </div>
   );
 }
