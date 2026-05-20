@@ -4,6 +4,7 @@ import Layout from "./components/Layout";
 import LoginPage from "./pages/LoginPage";
 import HomeFeed from "./pages/HomeFeed";
 import ProfilePage from "./pages/ProfilePage";
+import ExplorePage from "./pages/ExplorePage";
 
 function AppContent() {
   const { currentUser } = useAuth();
@@ -15,6 +16,7 @@ function AppContent() {
     switch (page.name) {
       case "home": return <HomeFeed />;
       case "profile": return <ProfilePage userId={page.userId} />;
+      case "explore": return <ExplorePage />;
       default: return <HomeFeed />;
     }
   }
