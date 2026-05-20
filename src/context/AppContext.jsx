@@ -3,66 +3,15 @@ import { createContext, useContext, useState } from "react";
 const AppContext = createContext(null);
 
 const INITIAL_USERS = [
-  {
-    id: "u1",
-    username: "nicolas",
-    displayName: "Nicolas",
-    bio: "Développeur web en formation 🚀",
-    avatar: "NC",
-    avatarColor: "#1d9bf0",
-    followers: ["u2"],
-    following: ["u2", "u3"],
-  },
-  {
-    id: "u2",
-    username: "saradev",
-    displayName: "Sara Dev",
-    bio: "Frontend engineer. React lover ⚛️",
-    avatar: "SD",
-    avatarColor: "#7c3aed",
-    followers: ["u1", "u3"],
-    following: ["u1"],
-  },
-  {
-    id: "u3",
-    username: "codingwolf",
-    displayName: "Coding Wolf 🐺",
-    bio: "Full-stack dev. Open source contributor.",
-    avatar: "CW",
-    avatarColor: "#059669",
-    followers: ["u1"],
-    following: ["u2"],
-  },
+  { id: "u1", username: "nicolas", displayName: "Nicolas", bio: "Développeur web en formation 🚀", avatar: "NC", avatarColor: "#1d9bf0", followers: ["u2"], following: ["u2", "u3"] },
+  { id: "u2", username: "saradev", displayName: "Sara Dev", bio: "Frontend engineer. React lover ⚛️", avatar: "SD", avatarColor: "#7c3aed", followers: ["u1", "u3"], following: ["u1"] },
+  { id: "u3", username: "codingwolf", displayName: "Coding Wolf 🐺", bio: "Full-stack dev. Open source contributor.", avatar: "CW", avatarColor: "#059669", followers: ["u1"], following: ["u2"] },
 ];
 
 const INITIAL_TWEETS = [
-  {
-    id: "t1",
-    authorId: "u2",
-    content: "React 19 est absolument incroyable. Le nouveau hook use() change tout !",
-    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 2).toISOString(),
-    likes: ["u1", "u3"],
-    replies: [],
-    parentId: null,
-  },
-  {
-    id: "t2",
-    authorId: "u3",
-    content: "Hot take : TypeScript devrait être le défaut pour tous les nouveaux projets. Sans exception.",
-    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 5).toISOString(),
-    likes: ["u1"],
-    replies: [],
-    parentId: null,
-  },
-  {
-    id: "t3",
-    authorId: "u2",
-    content: "Premier jour avec Vite 6 en production. Les performances sont hallucinantes 🔥",
-    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 8).toISOString(),
-    likes: [],
-    replies: [],
-    parentId: null,
-  },
+  { id: "t1", authorId: "u2", content: "React 19 est absolument incroyable. Le nouveau hook use() change tout !", createdAt: new Date(Date.now() - 1000 * 60 * 60 * 2).toISOString(), likes: ["u1", "u3"], replies: [], parentId: null },
+  { id: "t2", authorId: "u3", content: "Hot take : TypeScript devrait être le défaut pour tous les nouveaux projets. Sans exception.", createdAt: new Date(Date.now() - 1000 * 60 * 60 * 5).toISOString(), likes: ["u1"], replies: [], parentId: null },
+  { id: "t3", authorId: "u2", content: "Premier jour avec Vite 6 en production. Les performances sont hallucinantes 🔥", createdAt: new Date(Date.now() - 1000 * 60 * 60 * 8).toISOString(), likes: [], replies: [], parentId: null },
 ];
 
 function genId() {
@@ -74,11 +23,15 @@ export function AppProvider({ children }) {
     const saved = localStorage.getItem("xclone_users");
     return saved ? JSON.parse(saved) : INITIAL_USERS;
   });
-
   const [tweets, setTweets] = useState(() => {
     const saved = localStorage.getItem("xclone_tweets");
     return saved ? JSON.parse(saved) : INITIAL_TWEETS;
   });
+  const [page, setPage] = useState({ name: "home" });
+
+  function navigate(name, params = {}) {
+    setPage({ name, ...params });
+  }
 
   function saveUsers(newUsers) {
     setUsers(newUsers);
@@ -91,26 +44,11 @@ export function AppProvider({ children }) {
   }
 
   function postTweet(content, authorId, parentId = null) {
-    const newTweet = {
-      id: genId(),
-      authorId,
-      content,
-      createdAt: new Date().toISOString(),
-      likes: [],
-      replies: [],
-      parentId,
-    };
-
+    const newTweet = { id: genId(), authorId, content, createdAt: new Date().toISOString(), likes: [], replies: [], parentId };
     let updated = [newTweet, ...tweets];
-
     if (parentId) {
-      updated = updated.map(t =>
-        t.id === parentId
-          ? { ...t, replies: [...t.replies, newTweet.id] }
-          : t
-      );
+      updated = updated.map(t => t.id === parentId ? { ...t, replies: [...t.replies, newTweet.id] } : t);
     }
-
     saveTweets(updated);
     return newTweet;
   }
@@ -119,11 +57,7 @@ export function AppProvider({ children }) {
     const tweet = tweets.find(t => t.id === tweetId);
     let updated = tweets.filter(t => t.id !== tweetId);
     if (tweet?.parentId) {
-      updated = updated.map(t =>
-        t.id === tweet.parentId
-          ? { ...t, replies: t.replies.filter(r => r !== tweetId) }
-          : t
-      );
+      updated = updated.map(t => t.id === tweet.parentId ? { ...t, replies: t.replies.filter(r => r !== tweetId) } : t);
     }
     saveTweets(updated);
   }
@@ -132,12 +66,7 @@ export function AppProvider({ children }) {
     const updated = tweets.map(t => {
       if (t.id !== tweetId) return t;
       const liked = t.likes.includes(userId);
-      return {
-        ...t,
-        likes: liked
-          ? t.likes.filter(l => l !== userId)
-          : [...t.likes, userId],
-      };
+      return { ...t, likes: liked ? t.likes.filter(l => l !== userId) : [...t.likes, userId] };
     });
     saveTweets(updated);
   }
@@ -145,38 +74,16 @@ export function AppProvider({ children }) {
   function toggleFollow(currentUserId, targetUserId) {
     const me = users.find(u => u.id === currentUserId);
     const isFollowing = me.following.includes(targetUserId);
-
     const updated = users.map(u => {
-      if (u.id === currentUserId) {
-        return {
-          ...u,
-          following: isFollowing
-            ? u.following.filter(f => f !== targetUserId)
-            : [...u.following, targetUserId],
-        };
-      }
-      if (u.id === targetUserId) {
-        return {
-          ...u,
-          followers: isFollowing
-            ? u.followers.filter(f => f !== currentUserId)
-            : [...u.followers, currentUserId],
-        };
-      }
+      if (u.id === currentUserId) return { ...u, following: isFollowing ? u.following.filter(f => f !== targetUserId) : [...u.following, targetUserId] };
+      if (u.id === targetUserId) return { ...u, followers: isFollowing ? u.followers.filter(f => f !== currentUserId) : [...u.followers, currentUserId] };
       return u;
     });
     saveUsers(updated);
   }
 
   return (
-    <AppContext.Provider value={{
-      users,
-      tweets,
-      postTweet,
-      deleteTweet,
-      likeTweet,
-      toggleFollow,
-    }}>
+    <AppContext.Provider value={{ users, tweets, page, navigate, postTweet, deleteTweet, likeTweet, toggleFollow }}>
       {children}
     </AppContext.Provider>
   );

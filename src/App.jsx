@@ -1,19 +1,27 @@
 import { AuthProvider, useAuth } from "./context/AuthContext";
-import { AppProvider } from "./context/AppContext";
+import { AppProvider, useApp } from "./context/AppContext";
 import Layout from "./components/Layout";
 import LoginPage from "./pages/LoginPage";
 import HomeFeed from "./pages/HomeFeed";
+import ProfilePage from "./pages/ProfilePage";
 
 function AppContent() {
   const { currentUser } = useAuth();
+  const { page } = useApp();
 
-  if (!currentUser) {
-    return <LoginPage />;
+  if (!currentUser) return <LoginPage />;
+
+  function renderPage() {
+    switch (page.name) {
+      case "home": return <HomeFeed />;
+      case "profile": return <ProfilePage userId={page.userId} />;
+      default: return <HomeFeed />;
+    }
   }
 
   return (
     <Layout>
-      <HomeFeed />
+      {renderPage()}
     </Layout>
   );
 }
