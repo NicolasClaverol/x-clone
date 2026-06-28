@@ -1,70 +1,62 @@
-# 🗺️ ROADMAP — X Clone (Projet Passerelle 3)
+# ROADMAP — X Clone (Projet Passerelle 3)
 
 Formation développeur web Believemy
 
----
+## Etape 1 - Initialisation du projet (DONE)
+- Creation du projet avec Vite + React
+- Nettoyage des fichiers de demo
+- Initialisation Git et premier push
 
-## ✅ Étape 1 — Initialisation du projet
-- Création du projet avec Vite + React
-- Nettoyage des fichiers de démo
-- Initialisation Git
-- Premier push sur GitHub
+## Etape 2 - Structure de base et layout (DONE)
+- Layout principal (sidebar + contenu + panneau droit)
+- Composants de navigation
+- Design global (couleurs, typographie)
 
-## ✅ Étape 2 — Structure de base & layout
-- Mise en place du layout principal (sidebar + contenu + panneau droit)
-- Création des composants de navigation
-- Mise en place du design global (couleurs, typographie)
-
-## ✅ Étape 3 — Authentification
+## Etape 3 - Authentification (DONE)
 - Page de login
-- Context Auth (connexion / déconnexion)
+- Context Auth (connexion / deconnexion)
 - Persistance de la session avec localStorage
 
-## ✅ Étape 4 — Modèle de données & Context global
+## Etape 4 - Modele de donnees et Context global (DONE)
 - Structure des utilisateurs et des tweets
-- AppContext global
-- Données de départ (seed data)
+- AppContext global et seed data
 - Persistance avec localStorage
 
-## ✅ Étape 5 — Composer un tweet
+## Etape 5 - Composer un tweet (DONE)
 - Composant TweetComposer
-- Création et affichage d'un tweet
-- Limite de 280 caractères
+- Creation et affichage d'un tweet
+- Limite de 280 caracteres
 
-## ✅ Étape 6 — Affichage du feed
+## Etape 6 - Affichage du feed (DONE)
 - Composant TweetCard
-- Feed filtré sur les abonnements
-- Affichage du temps écoulé (ex: "2h", "3j")
+- Feed filtre sur les abonnements
+- Affichage du temps ecoule
 
-## ✅ Étape 7 — Interactions sur les tweets
+## Etape 7 - Interactions sur les tweets (DONE)
 - Liker un tweet
 - Supprimer un tweet
-- Répondre à un tweet
+- Repondre a un tweet
 
-## ✅ Étape 8 — Pages profil
+## Etape 8 - Pages profil (DONE)
 - Page profil utilisateur
-- Stats (abonnés, abonnements, nombre de tweets)
+- Stats (abonnes, abonnements, tweets)
 - Liste des tweets de l'utilisateur
 
-## ⬜ Étape 9 — Abonnements
+## Etape 9 - Abonnements (DONE)
 - Suivre / ne plus suivre un compte
-- Feed personnalisé selon les abonnements
-- Panneau "Qui suivre"
+- Feed personnalise selon les abonnements
+- Panneau Qui suivre
 
-## ⬜ Étape 10 — Explorer & recherche
+## Etape 10 - Explorer et recherche (DONE)
 - Page Explorer
 - Barre de recherche de tweets
 
-## ⬜ Étape 11 — Notifications
+## Etape 11 - Notifications (DONE)
 - Page Notifications
-- Affichage des likes et réponses reçus
+- Affichage des likes et reponses recus
 
-## ⬜ Étape 12 — Polish final
-- Responsive mobile
-- Animations et micro-interactions
-- Nettoyage du code
+## Etape 12 - Polish final (DONE)
+- Mise a jour ROADMAP
 - README final complet
 
----
-
-> Projet réalisé dans le cadre du projet passerelle 3 de Believemy.
+Projet realise dans le cadre du projet passerelle 3 de Believemy.
