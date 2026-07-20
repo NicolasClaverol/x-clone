@@ -1,28 +1,30 @@
-# X Clone — Projet Passerelle 3
+# X Clone - Projet Passerelle 3
 
 Projet realise dans le cadre de la certification developpeur web Believemy.
 
-Un clone de X (anciennement Twitter) construit progressivement avec React,
-demonstrant une approche de developpement incrementale via des commits Git reguliers.
+Un clone de X (anciennement Twitter) construit progressivement avec React et Vite, avec des commits reguliers sur GitHub qui illustrent le developpement etape par etape.
 
 ## Technologies utilisees
 
 - React avec Vite
 - JavaScript ES6+
-- Styles inline CSS-in-JS
+- CSS inline (styles en JS)
 - localStorage pour la persistance des donnees
 - Git et GitHub pour le versioning
 
 ## Fonctionnalites
 
-- Authentification : connexion avec 3 comptes fictifs
-- Composer un tweet : limite de 280 caracteres
+- Connexion et deconnexion avec 3 comptes fictifs
+- Composer un tweet avec limite de 280 caracteres
 - Feed personnalise : tweets des comptes suivis uniquement
-- Interactions : liker, repondre, supprimer un tweet
-- Page profil : stats, tweets, abonnes et abonnements
-- Abonnements : suivre/ne plus suivre, panneau Qui suivre
-- Explorer : recherche de tweets et d'utilisateurs
-- Notifications : likes et reponses recus
+- Liker un tweet
+- Repondre a un tweet
+- Supprimer un tweet
+- Page profil avec stats (tweets, abonnes, abonnements)
+- Abonnements : suivre et ne plus suivre un compte
+- Panneau Qui suivre
+- Page Explorer avec recherche en temps reel
+- Page Notifications : likes et reponses recus
 
 ## Installation
 
@@ -36,8 +38,8 @@ Ouvre ensuite http://localhost:5173 dans ton navigateur.
 ## Comptes de demonstration
 
 - Nicolas (@nicolas)
-- Sara Dev (@saradev)
-- Coding Wolf (@codingwolf)
+- Ulysse (@ulysse)
+- Agamemnon (@agamemnon)
 
 ## Structure du projet
 
@@ -59,4 +61,16 @@ src/
     NotificationsPage.jsx
   App.jsx
 
-Projet realise par Nicolas Claverol — Formation Believemy 2025
+## Criteres du cahier des charges
+
+- Connexion et deconnexion : OK
+- Creation d un tweet : OK
+- Affichage des tweets sur un profil : OK
+- Feed principal : OK
+- Repondre a un tweet : OK
+- Supprimer un tweet : OK
+- Git et GitHub : OK
+- Documentation technique : OK
+- Video de demonstration : OK
+
+Projet realise par Nicolas Claverol - Formation Believemy 2025
