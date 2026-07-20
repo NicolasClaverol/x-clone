@@ -3,15 +3,19 @@ import { createContext, useContext, useState } from "react";
 const AppContext = createContext(null);
 
 const INITIAL_USERS = [
-  { id: "u1", username: "nicolas", displayName: "Nicolas", bio: "Développeur web en formation 🚀", avatar: "NC", avatarColor: "#1d9bf0", followers: ["u2"], following: ["u2", "u3"] },
-  { id: "u2", username: "saradev", displayName: "Sara Dev", bio: "Frontend engineer. React lover ⚛️", avatar: "SD", avatarColor: "#7c3aed", followers: ["u1", "u3"], following: ["u1"] },
-  { id: "u3", username: "codingwolf", displayName: "Coding Wolf 🐺", bio: "Full-stack dev. Open source contributor.", avatar: "CW", avatarColor: "#059669", followers: ["u1"], following: ["u2"] },
+  { id: "u1", username: "nicolas", displayName: "Nicolas", bio: "Developpeur web en formation", avatar: "NC", avatarColor: "#1d9bf0", followers: ["u2"], following: ["u2", "u3"] },
+  { id: "u2", username: "ulysse", displayName: "Ulysse", bio: "Voyageur infatigable. Toujours en route vers Ithaque.", avatar: "UL", avatarColor: "#7c3aed", followers: ["u1", "u3"], following: ["u1"] },
+  { id: "u3", username: "agamemnon", displayName: "Agamemnon", bio: "Roi des rois. Amateur de grandes epopees.", avatar: "AG", avatarColor: "#059669", followers: ["u1"], following: ["u2"] },
 ];
 
+const TWO_HOURS = 2 * 60 * 60 * 1000;
+const FIVE_HOURS = 5 * 60 * 60 * 1000;
+const EIGHT_HOURS = 8 * 60 * 60 * 1000;
+
 const INITIAL_TWEETS = [
-  { id: "t1", authorId: "u2", content: "React 19 est absolument incroyable. Le nouveau hook use() change tout !", createdAt: new Date(Date.now() - 1000 * 60 * 60 * 2).toISOString(), likes: ["u1", "u3"], replies: [], parentId: null },
-  { id: "t2", authorId: "u3", content: "Hot take : TypeScript devrait être le défaut pour tous les nouveaux projets. Sans exception.", createdAt: new Date(Date.now() - 1000 * 60 * 60 * 5).toISOString(), likes: ["u1"], replies: [], parentId: null },
-  { id: "t3", authorId: "u2", content: "Premier jour avec Vite 6 en production. Les performances sont hallucinantes 🔥", createdAt: new Date(Date.now() - 1000 * 60 * 60 * 8).toISOString(), likes: [], replies: [], parentId: null },
+  { id: "t1", authorId: "u2", content: "Le voyage est long mais chaque etape vaut le detour.", createdAt: new Date(Date.now() - TWO_HOURS).toISOString(), likes: ["u1", "u3"], replies: [], parentId: null },
+  { id: "t2", authorId: "u3", content: "Les grandes choses prennent du temps. La patience est la premiere des vertus.", createdAt: new Date(Date.now() - FIVE_HOURS).toISOString(), likes: ["u1"], replies: [], parentId: null },
+  { id: "t3", authorId: "u2", content: "Nouvelle journee, nouvelles aventures. Pret pour la suite !", createdAt: new Date(Date.now() - EIGHT_HOURS).toISOString(), likes: [], replies: [], parentId: null },
 ];
 
 function genId() {
