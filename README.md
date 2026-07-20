@@ -28,10 +28,12 @@ Un clone de X (anciennement Twitter) construit progressivement avec React et Vit
 
 ## Installation
 
+\```
 git clone https://github.com/NicolasClaverol/x-clone.git
 cd x-clone
 npm install
 npm run dev
+\```
 
 Ouvre ensuite http://localhost:5173 dans ton navigateur.
 
@@ -43,6 +45,7 @@ Ouvre ensuite http://localhost:5173 dans ton navigateur.
 
 ## Structure du projet
 
+\```
 src/
   components/
     Layout.jsx
@@ -60,6 +63,7 @@ src/
     ExplorePage.jsx
     NotificationsPage.jsx
   App.jsx
+\```
 
 ## Criteres du cahier des charges
 
@@ -73,4 +77,4 @@ src/
 - Documentation technique : OK
 - Video de demonstration : OK
 
-Projet realise par Nicolas Claverol - Formation Believemy 2025
+Projet realise par Nicolas Claverol - Formation Believemy 2026
