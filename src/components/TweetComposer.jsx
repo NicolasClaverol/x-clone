@@ -24,7 +24,6 @@ export default function TweetComposer({ parentId = null, onDone }) {
       borderBottom: "1px solid #2f3336",
     }}>
 
-      {/* Avatar */}
       <div style={{
         width: 40,
         height: 40,
@@ -41,7 +40,6 @@ export default function TweetComposer({ parentId = null, onDone }) {
         {currentUser.avatar}
       </div>
 
-      {/* Zone de texte */}
       <div style={{ flex: 1 }}>
         <textarea
           value={text}
@@ -62,7 +60,6 @@ export default function TweetComposer({ parentId = null, onDone }) {
           }}
         />
 
-        {/* Barre du bas */}
         <div style={{
           display: "flex",
           alignItems: "center",
@@ -71,7 +68,6 @@ export default function TweetComposer({ parentId = null, onDone }) {
           borderTop: "1px solid #2f3336",
         }}>
 
-          {/* Compteur de caractères */}
           <span style={{
             fontSize: 13,
             color: text.length > MAX * 0.8 ? "#f4212e" : "#71767b",
@@ -79,7 +75,6 @@ export default function TweetComposer({ parentId = null, onDone }) {
             {MAX - text.length}
           </span>
 
-          {/* Bouton publier */}
           <button
             onClick={handleSubmit}
             disabled={!text.trim()}

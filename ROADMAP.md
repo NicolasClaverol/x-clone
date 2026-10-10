@@ -1,62 +1,27 @@
-# ROADMAP — X Clone (Projet Passerelle 3)
+# X Clone - Notes de développement
 
-Formation développeur web Believemy
+Projet passerelle 3 - Formation Rocket Believemy
 
-## Etape 1 - Initialisation du projet (DONE)
-- Creation du projet avec Vite + React
-- Nettoyage des fichiers de demo
-- Initialisation Git et premier push
+## Ce que j'ai construit
 
-## Etape 2 - Structure de base et layout (DONE)
-- Layout principal (sidebar + contenu + panneau droit)
-- Composants de navigation
-- Design global (couleurs, typographie)
+Un clone de X (Twitter) en React. J'ai voulu partir de zéro sans framework de routing ni base de données, juste React + localStorage pour voir jusqu'où je pouvais aller.
 
-## Etape 3 - Authentification (DONE)
-- Page de login
-- Context Auth (connexion / deconnexion)
-- Persistance de la session avec localStorage
+## Comment j'ai procédé
 
-## Etape 4 - Modele de donnees et Context global (DONE)
-- Structure des utilisateurs et des tweets
-- AppContext global et seed data
-- Persistance avec localStorage
+J'ai commencé par mettre en place la structure de base et le layout, puis j'ai ajouté les fonctionnalités une par une en committant régulièrement.
 
-## Etape 5 - Composer un tweet (DONE)
-- Composant TweetComposer
-- Creation et affichage d'un tweet
-- Limite de 280 caracteres
-
-## Etape 6 - Affichage du feed (DONE)
-- Composant TweetCard
-- Feed filtre sur les abonnements
-- Affichage du temps ecoule
-
-## Etape 7 - Interactions sur les tweets (DONE)
-- Liker un tweet
-- Supprimer un tweet
-- Repondre a un tweet
-
-## Etape 8 - Pages profil (DONE)
-- Page profil utilisateur
-- Stats (abonnes, abonnements, tweets)
-- Liste des tweets de l'utilisateur
-
-## Etape 9 - Abonnements (DONE)
-- Suivre / ne plus suivre un compte
-- Feed personnalise selon les abonnements
-- Panneau Qui suivre
-
-## Etape 10 - Explorer et recherche (DONE)
-- Page Explorer
-- Barre de recherche de tweets
-
-## Etape 11 - Notifications (DONE)
+Les grandes étapes :
+- Mise en place du projet avec Vite et React
+- Layout principal avec sidebar
+- Système de connexion / déconnexion
+- Modèle de données (utilisateurs et tweets) avec persistance localStorage
+- Composer et afficher des tweets
+- Like, réponse, suppression
+- Pages profil avec stats
+- Abonnements et feed personnalisé
+- Page Explorer avec recherche
 - Page Notifications
-- Affichage des likes et reponses recus
 
-## Etape 12 - Polish final (DONE)
-- Mise a jour ROADMAP
-- README final complet
+## Ce que j'aurais fait différemment
 
-Projet realise dans le cadre du projet passerelle 3 de Believemy.
+Avec plus de temps j'aurais utilisé une vraie base de données et React Router. Le routing manuel fonctionne mais devient vite limité.

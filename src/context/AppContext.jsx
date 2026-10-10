@@ -8,14 +8,12 @@ const INITIAL_USERS = [
   { id: "u3", username: "agamemnon", displayName: "Agamemnon", bio: "Roi des rois. Amateur de grandes epopees.", avatar: "AG", avatarColor: "#059669", followers: ["u1"], following: ["u2"] },
 ];
 
-const TWO_HOURS = 2 * 60 * 60 * 1000;
-const FIVE_HOURS = 5 * 60 * 60 * 1000;
-const EIGHT_HOURS = 8 * 60 * 60 * 1000;
+const H = 60 * 60 * 1000;
 
 const INITIAL_TWEETS = [
-  { id: "t1", authorId: "u2", content: "Le voyage est long mais chaque etape vaut le detour.", createdAt: new Date(Date.now() - TWO_HOURS).toISOString(), likes: ["u1", "u3"], replies: [], parentId: null },
-  { id: "t2", authorId: "u3", content: "Les grandes choses prennent du temps. La patience est la premiere des vertus.", createdAt: new Date(Date.now() - FIVE_HOURS).toISOString(), likes: ["u1"], replies: [], parentId: null },
-  { id: "t3", authorId: "u2", content: "Nouvelle journee, nouvelles aventures. Pret pour la suite !", createdAt: new Date(Date.now() - EIGHT_HOURS).toISOString(), likes: [], replies: [], parentId: null },
+  { id: "t1", authorId: "u2", content: "Le voyage est long mais chaque etape vaut le detour.", createdAt: new Date(Date.now() - 2 * H).toISOString(), likes: ["u1", "u3"], replies: [], parentId: null },
+  { id: "t2", authorId: "u3", content: "Les grandes choses prennent du temps. La patience est la premiere des vertus.", createdAt: new Date(Date.now() - 5 * H).toISOString(), likes: ["u1"], replies: [], parentId: null },
+  { id: "t3", authorId: "u2", content: "Nouvelle journee, nouvelles aventures. Pret pour la suite !", createdAt: new Date(Date.now() - 8 * H).toISOString(), likes: [], replies: [], parentId: null },
 ];
 
 function genId() {

@@ -65,16 +65,4 @@ src/
   App.jsx
 ```
 
-## Criteres du cahier des charges
-
-- Connexion et deconnexion : OK
-- Creation d un tweet : OK
-- Affichage des tweets sur un profil : OK
-- Feed principal : OK
-- Repondre a un tweet : OK
-- Supprimer un tweet : OK
-- Git et GitHub : OK
-- Documentation technique : OK
-- Video de demonstration : OK
-
-Projet realise par Nicolas Claverol - Formation Believemy 2026
+Projet realise par Nicolas Claverol - Formation Rocket Believemy 2025

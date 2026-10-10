@@ -38,7 +38,6 @@ export default function TweetCard({ tweet }) {
         onMouseEnter={e => e.currentTarget.style.background = "#080808"}
         onMouseLeave={e => e.currentTarget.style.background = "none"}
       >
-        {/* Avatar */}
         <div style={{
           width: 40,
           height: 40,
@@ -55,10 +54,8 @@ export default function TweetCard({ tweet }) {
           {author.avatar}
         </div>
 
-        {/* Contenu */}
         <div style={{ flex: 1, minWidth: 0 }}>
 
-          {/* En-tête */}
           <div style={{
             display: "flex",
             alignItems: "center",
@@ -78,7 +75,6 @@ export default function TweetCard({ tweet }) {
             </span>
           </div>
 
-          {/* Texte */}
           <p style={{
             color: "#e7e9ea",
             fontSize: 15,
@@ -89,11 +85,9 @@ export default function TweetCard({ tweet }) {
             {tweet.content}
           </p>
 
-          {/* Actions */}
           <div
             style={{ display: "flex", gap: 24, alignItems: "center" }}
           >
-            {/* Répondre */}
             <button
               onClick={() => setReplying(r => !r)}
               style={{
@@ -114,7 +108,6 @@ export default function TweetCard({ tweet }) {
               {tweet.replies.length > 0 && <span>{tweet.replies.length}</span>}
             </button>
 
-            {/* Liker */}
             <button
               onClick={() => likeTweet(tweet.id, currentUser.id)}
               style={{
@@ -136,7 +129,6 @@ export default function TweetCard({ tweet }) {
               {tweet.likes.length > 0 && <span>{tweet.likes.length}</span>}
             </button>
 
-            {/* Supprimer — uniquement pour l'auteur */}
             {isOwner && (
               <button
                 onClick={() => deleteTweet(tweet.id)}
@@ -166,7 +158,6 @@ export default function TweetCard({ tweet }) {
             )}
           </div>
 
-          {/* Composeur de réponse */}
           {replying && (
             <div style={{ marginTop: 12 }}>
               <TweetComposer
