@@ -65,4 +65,4 @@ src/
   App.jsx
 ```
 
-Projet realise par Nicolas Claverol - Formation Rocket Believemy 2025
+Projet realise par Nicolas Claverol - Formation Rocket Believemy
