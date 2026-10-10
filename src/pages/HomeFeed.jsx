@@ -4,8 +4,9 @@ import TweetComposer from "../components/TweetComposer";
 import TweetCard from "../components/TweetCard";
 
 export default function HomeFeed() {
-  const { currentUser } = useAuth();
-  const { tweets } = useApp();
+  const { currentUser: authUser } = useAuth();
+  const { tweets, users } = useApp();
+  const currentUser = users.find(u => u.id === authUser?.id) ?? authUser;
 
   const feedTweets = tweets
     .filter(t => {

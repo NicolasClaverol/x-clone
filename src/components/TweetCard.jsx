@@ -17,7 +17,7 @@ function timeAgo(dateStr) {
 
 export default function TweetCard({ tweet }) {
   const { currentUser } = useAuth();
-  const { users, likeTweet, deleteTweet } = useApp();
+  const { users, likeTweet, deleteTweet, navigate } = useApp();
   const [replying, setReplying] = useState(false);
 
   const author = users.find(u => u.id === tweet.authorId);
@@ -25,6 +25,11 @@ export default function TweetCard({ tweet }) {
 
   const liked = tweet.likes.includes(currentUser?.id);
   const isOwner = tweet.authorId === currentUser?.id;
+
+  function goToProfile(e) {
+    e.stopPropagation();
+    navigate("profile", { userId: author.id });
+  }
 
   return (
     <div style={{ borderBottom: "1px solid #2f3336" }}>
@@ -38,19 +43,22 @@ export default function TweetCard({ tweet }) {
         onMouseEnter={e => e.currentTarget.style.background = "#080808"}
         onMouseLeave={e => e.currentTarget.style.background = "none"}
       >
-        <div style={{
-          width: 40,
-          height: 40,
-          borderRadius: "50%",
-          background: author.avatarColor,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          color: "#fff",
-          fontWeight: 700,
-          fontSize: 14,
-          flexShrink: 0,
-        }}>
+        <div
+          onClick={goToProfile}
+          style={{
+            width: 40,
+            height: 40,
+            borderRadius: "50%",
+            background: author.avatarColor,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            color: "#fff",
+            fontWeight: 700,
+            fontSize: 14,
+            flexShrink: 0,
+            cursor: "pointer",
+          }}>
           {author.avatar}
         </div>
 
@@ -63,7 +71,12 @@ export default function TweetCard({ tweet }) {
             marginBottom: 4,
             flexWrap: "wrap",
           }}>
-            <span style={{ fontWeight: 700, color: "#e7e9ea", fontSize: 15 }}>
+            <span
+              onClick={goToProfile}
+              style={{ fontWeight: 700, color: "#e7e9ea", fontSize: 15, cursor: "pointer" }}
+              onMouseEnter={e => e.currentTarget.style.textDecoration = "underline"}
+              onMouseLeave={e => e.currentTarget.style.textDecoration = "none"}
+            >
               {author.displayName}
             </span>
             <span style={{ color: "#71767b", fontSize: 14 }}>
@@ -85,9 +98,7 @@ export default function TweetCard({ tweet }) {
             {tweet.content}
           </p>
 
-          <div
-            style={{ display: "flex", gap: 24, alignItems: "center" }}
-          >
+          <div style={{ display: "flex", gap: 24, alignItems: "center" }}>
             <button
               onClick={() => setReplying(r => !r)}
               style={{

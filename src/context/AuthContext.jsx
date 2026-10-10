@@ -1,52 +1,21 @@
 import { createContext, useContext, useState } from "react";
+import { useApp } from "./AppContext";
 
 const AuthContext = createContext(null);
 
-const USERS = [
-  {
-    id: "u1",
-    username: "nicolas",
-    displayName: "Nicolas",
-    bio: "Developpeur web en formation",
-    avatar: "NC",
-    avatarColor: "#1d9bf0",
-  },
-  {
-    id: "u2",
-    username: "ulysse",
-    displayName: "Ulysse",
-    bio: "Voyageur infatigable. Toujours en route vers Ithaque.",
-    avatar: "UL",
-    avatarColor: "#7c3aed",
-  },
-  {
-    id: "u3",
-    username: "agamemnon",
-    displayName: "Agamemnon",
-    bio: "Roi des rois. Amateur de grandes epopees.",
-    avatar: "AG",
-    avatarColor: "#059669",
-  },
-];
-
 export function AuthProvider({ children }) {
-  const [currentUser, setCurrentUser] = useState(() => {
-    const saved = localStorage.getItem("xclone_user");
-    return saved ? JSON.parse(saved) : null;
-  });
+  const [currentUser, setCurrentUser] = useState(null);
 
   function login(user) {
     setCurrentUser(user);
-    localStorage.setItem("xclone_user", JSON.stringify(user));
   }
 
   function logout() {
     setCurrentUser(null);
-    localStorage.removeItem("xclone_user");
   }
 
   return (
-    <AuthContext.Provider value={{ currentUser, login, logout, USERS }}>
+    <AuthContext.Provider value={{ currentUser, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
